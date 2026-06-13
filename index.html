@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="VIEWPORT" content="width=device-width,initial-scale=1">
+    <title>VIEWPORT  | Art x Code</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Adding a sophisticated font via Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <div class="logo">🌸 VIEWPORT </div>
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+        <a href="#gallery">Gallery</a>
+        <a href="#artists">Artists</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">EST. 2024</span>
+                <h1>VIEWPORT</h1>
+                <p>A place where art meets code.</p>
+                <div class="cta-group">
+                    <button id="exploreBtn" class="primary-btn">Explore Gallery</button>
+                    <button class="secondary-btn">Join Us</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="content-section">
+            <div class="section-header">
+                <h2>Featured Artwork</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="card art-card">
+                    <div class="card-image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Cosmos at Sunset</h3>
+                        <p class="artist-name">Emily Reyes</p>
+                        <p class="tag">Digital Canvas</p>
+                    </div>
+                </div>
+                <!-- Duplicate for visual density -->
+                <div class="card art-card">
+                    <div class="card-image-placeholder" style="background: #E8E2D2;"></div>
+                    <div class="card-info">
+                        <h3>Neon Reverie</h3>
+                        <p class="artist-name">Marco Santos</p>
+                        <p class="tag">Generative Art</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="artists" class="content-section">
+            <div class="section-header">
+                <h2>The Collective</h2>
+            </div>
+            <div class="artist-chips">
+                <span class="chip">🎨 Emily Reyes</span>
+                <span class="chip">🎨 Marco Santos</span>
+                <span class="chip">🎨 Aya Cruz</span>
+                <span class="chip">🎨 Julian Vance</span>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="about-card">
+                <h2>Why We Built This</h2>
+                <p>Some dreams begin as sketches. Some become reality through code.</p>
+                <p>VIEWPORT exists so artists can share their worlds with everyone.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="brand">VIEWPORT  v1.0</p>
+            <p class="promise">Built with art, code, and a promise.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
