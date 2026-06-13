@@ -1,37 +1,42 @@
+/* --- 1. CORE VARIABLES & RESET --- */
 :root {
     --bg: #FAF8F3;
     --text: #1D1D1D;
     --accent: #8B6FD8;
     --accent-soft: #F0E4FF;
-    --glass: rgba(255, 255, 255, 0.8);
-    --border: rgba(0, 0, 0, 0.05);
+    --glass: rgba(255, 255, 255, 0.85);
+    --border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 * { 
     box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-html { scroll-behavior: smooth; }
+html { 
+    scroll-behavior: smooth; 
+}
 
 body {
     font-family: 'Inter', sans-serif;
-    margin: 0;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION --- */
+/* --- 2. NAVIGATION --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 15px 8%;
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -39,55 +44,54 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 1.2rem;
-    letter-spacing: 1px;
-    text-shadow: 0 0 15px rgba(255, 183, 213, 0.5);
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo-img {
+    height: 35px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 35px;
     color: var(--text);
     font-size: 0.9rem;
     font-weight: 600;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
-.nav-links a:hover { opacity: 1; color: var(--accent); }
-
-/* Hamburger Menu Button */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
+.nav-links a:hover { 
+    opacity: 1; 
+    color: var(--accent); 
 }
 
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--text);
-    transition: 0.3s;
-}
-
-/* --- HERO --- */
+/* --- 3. HERO SECTION --- */
 .hero {
-    height: 85vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
-    padding: 0 10%;
+    padding: 80px 10%;
     position: relative;
     background: radial-gradient(circle at top right, #F0E4FF 0%, #FAF8F3 60%);
+    text-align: left;
 }
 
-/* Digital Scanline Effect */
+/* Digital Scanline Effect for that "Manga Screen" look */
 .hero::before {
     content: "";
     position: absolute;
@@ -99,23 +103,30 @@ nav {
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    margin: 10px 0;
-    line-height: 1.1;
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin: 15px 0;
+    line-height: 1;
+    letter-spacing: -2px;
 }
 
 .eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 4px;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
     color: var(--accent);
     font-weight: 600;
+    text-transform: uppercase;
 }
 
-/* --- BUTTONS --- */
-.cta-group { margin-top: 30px; }
+.hero p {
+    font-size: 1.2rem;
+    max-width: 500px;
+    opacity: 0.7;
+    margin-bottom: 40px;
+}
 
+/* --- 4. BUTTONS --- */
 .primary-btn {
-    padding: 16px 32px;
+    padding: 18px 36px;
     border: none;
     border-radius: 50px;
     background: var(--text);
@@ -126,202 +137,251 @@ nav {
 }
 
 .secondary-btn {
-    padding: 16px 32px;
+    padding: 18px 36px;
     border: 1px solid var(--text);
     border-radius: 50px;
     background: transparent;
-    margin-left: 10px;
+    margin-left: 15px;
     font-weight: 600;
     cursor: pointer;
 }
 
-/* --- CARDS --- */
-.content-section { padding: 80px 10%; }
+button:active { 
+    transform: scale(0.96); 
+}
+
+/* --- 5. FAKE ADS SYSTEM --- */
+.ad-unit {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 25px;
+    width: 90%;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.ad-unit::before {
+    content: "ADVERTISEMENT";
+    font-size: 8px;
+    letter-spacing: 1px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #bbb;
+}
+
+.ad-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    cursor: pointer;
+    opacity: 0.3;
+    font-size: 14px;
+}
+
+.ad-content h4 {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.ad-content p {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.ad-btn {
+    margin-top: 15px;
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ad-leaderboard { max-width: 728px; min-height: 90px; }
+.ad-rectangle { width: 300px; height: 250px; }
+
+/* --- 6. GALLERY & CARDS --- */
+.content-section { padding: 100px 10%; }
+
+.section-header { margin-bottom: 50px; }
+.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+.line { width: 50px; height: 4px; background: var(--accent); margin-top: 15px; }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .card {
     background: white;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--border);
     position: relative;
+    cursor: pointer;
+}
+
+.card:hover { 
+    transform: translateY(-12px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
 }
 
 .card-image-placeholder {
-    height: 240px;
-    background: linear-gradient(45deg, #f3f3f3 25%, #ececec 50%, #f3f3f3 75%);
+    height: 280px;
+    background: linear-gradient(45deg, #f9f9f9 25%, #f1f1f1 50%, #f9f9f9 75%);
 }
 
-.card-info { padding: 20px; }
+.card-info { padding: 25px; }
+.artist-name { font-size: 0.9rem; opacity: 0.5; margin-bottom: 10px; }
+.tag { 
+    font-size: 0.7rem; 
+    background: var(--accent-soft); 
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    color: var(--accent); 
+    font-weight: bold; 
+}
 
+/* Hover reveal text */
 .art-card::after {
-    content: 'VIEW ARTWORK →';
+    content: 'VIEW PIECE →';
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 0.65rem;
+    bottom: 25px;
+    right: 25px;
+    font-size: 0.7rem;
     font-weight: bold;
     color: var(--accent);
     opacity: 0;
     transform: translateX(-10px);
 }
+.art-card:hover::after { opacity: 1; transform: translateX(0); }
 
-.card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-.card:hover::after { opacity: 1; transform: translateX(0); }
+/* --- 7. ARTIST CHIPS --- */
+.artist-chips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.chip {
+    padding: 12px 24px;
+    background: white;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
 
-/* --- UPDATED MOBILE STYLES --- */
+/* --- 8. ABOUT & FOOTER --- */
+.about-section { 
+    background: #1D1D1D; 
+    color: white; 
+    padding: 120px 10%; 
+    margin-top: 60px;
+}
+
+.about-card h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.5rem; 
+    color: var(--accent-soft);
+    margin-bottom: 20px;
+}
+
+.about-card p { opacity: 0.7; font-size: 1.1rem; max-width: 600px; margin-bottom: 20px; }
+
+footer {
+    padding: 80px 10%;
+    background: #151515;
+    color: white;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-content .brand { 
+    font-weight: bold; 
+    letter-spacing: 4px; 
+    color: var(--accent-soft); 
+    margin-bottom: 10px;
+}
+.promise { font-size: 0.8rem; opacity: 0.4; font-style: italic; }
+
+/* --- 9. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
+    nav { padding: 15px 5%; }
+    
+    .logo { order: 1; font-size: 1rem; }
+    
     .menu-toggle { 
         display: flex; 
-        order: 2; /* Ensures hamburger stays on the right */
+        flex-direction: column; 
+        gap: 5px; 
+        background: none; 
+        border: none; 
+        cursor: pointer;
+        order: 2;
+        z-index: 1001;
     }
 
-    .logo {
-        order: 1;
+    .menu-toggle span { 
+        width: 25px; 
+        height: 2px; 
+        background: var(--text); 
+        transition: 0.3s;
     }
 
     .nav-links {
         position: fixed;
         top: 0;
         right: 0;
-        width: 70%; /* Narrower menu looks more modern */
+        width: 75%;
         height: 100vh;
         background: white;
-        display: flex; /* Explicitly set flex for mobile */
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
-        /* The Secret Sauce: Move it off screen and hide it */
-        transform: translateX(100%); 
-        visibility: hidden; 
-        pointer-events: none;
-        
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-        transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0), visibility 0.4s;
+        transform: translateX(100%);
+        visibility: hidden;
+        box-shadow: -20px 0 40px rgba(0,0,0,0.1);
         z-index: 1000;
     }
 
     .nav-links.active { 
         transform: translateX(0); 
-        visibility: visible;
-        pointer-events: all;
+        visibility: visible; 
     }
 
-    .nav-links a {
-        margin: 20px 0; /* Vertical spacing for mobile links */
-        font-size: 1.2rem;
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
+    .nav-links a { 
+        margin: 20px 0; 
+        font-size: 1.4rem; 
+        margin-left: 0; 
     }
 
-    /* Hero adjustments to prevent text being too small */
     .hero { 
-        padding: 0 8%; 
         text-align: center; 
-        height: 80vh; 
+        padding: 100px 5% 60px; 
+        min-height: auto;
     }
-    
-    .hero h1 { font-size: 3rem; }
-    
-    .cta-group {
-        display: flex;
-        flex-direction: column;
+
+    .hero h1 { font-size: 3.5rem; }
+
+    .cta-group { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
         width: 100%;
-        gap: 12px;
     }
 
     .secondary-btn { margin-left: 0; }
-}
 
-/* Manga Interaction Feedback */
-button:active, .card:active { transform: scale(0.96); filter: brightness(1.1); }
-
-/* --- ARTIST CHIPS (Fixed for Mobile) --- */
-.artist-chips { 
-    display: flex; 
-    gap: 10px; 
-    flex-wrap: wrap; 
-    margin-top: 20px;
-}
-
-.chip {
-    padding: 12px 20px;
-    background: white;
-    border-radius: 50px; /* Makes them pill-shaped */
-    border: 1px solid rgba(0,0,0,0.08);
-    font-size: 0.85rem;
-    font-weight: 600;
-    white-space: nowrap; /* Prevents the name from breaking into two lines */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    display: flex;
-    align-items: center;
-}
-
-/* --- ABOUT SECTION (Creating Depth) --- */
-.about-section { 
-    background: #1D1D1D; /* Dark background for contrast */
-    color: #FAF8F3; 
-    padding: 80px 10%; 
-    text-align: left; /* Align left for a more editorial feel */
-    margin-top: 40px;
-}
-
-.about-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--accent-soft);
-}
-
-.about-card p {
-    opacity: 0.8;
-    font-size: 1.1rem;
-    max-width: 500px;
-    margin-bottom: 20px;
-}
-
-/* --- FOOTER (The Signature) --- */
-footer {
-    padding: 60px 10%;
-    background: #151515; /* Slightly darker than about section */
-    color: white;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    text-align: center;
-}
-
-.footer-content .brand {
-    font-weight: bold;
-    letter-spacing: 3px;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    color: var(--accent-soft);
-}
-
-.footer-content .promise {
-    font-size: 0.75rem;
-    opacity: 0.5;
-    font-style: italic;
-}
-
-/* --- SECTION HEADERS --- */
-.content-section {
-    padding: 60px 8%;
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-}
-
-@media (max-width: 768px) {
-    .content-section { padding: 50px 6%; }
-    .about-section { padding: 60px 6%; }
+    .ad-leaderboard { width: 95%; height: auto; }
 }
